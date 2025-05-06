@@ -1,14 +1,19 @@
 /* Container for Add Property Page */
 .add-property-container {
    padding: 2rem;
+   margin: 5rem;
    background-color: #f9f9f9;
    font-family: Arial, sans-serif;
+   border-radius: 8px;
+   box-shadow: 0px 4px 10px 8px rgba(0, 0, 0, 0.1);
+   /* max-width: 360px; */
  }
  
  .add-property-container h2 {
+   color: #2980b9; 
    font-size: 2rem;
-   color: #333;
-   margin-bottom: 1rem;
+   margin-bottom: 20px;
+   text-align: center;
  }
  
  form {
@@ -22,6 +27,7 @@
    border: 1px solid #ddd;
    border-radius: 4px;
    margin-bottom: 1rem;
+   width: 100%;
  }
  
  form button {

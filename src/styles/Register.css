@@ -1,14 +1,14 @@
 /* Register Page Styling */
 .register-container {
    width: 100%;
-   max-width: 450px;
+   max-width: 360px;
    margin: 0 auto;
    padding: 20px;
    background-color: #fff;
    border-radius: 8px;
-   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 4px 8px 5px rgba(0, 0, 0, 0.1);
    margin-top: 50px;
-   margin-bottom: 106px;
+   margin-bottom: 9.7vh;
  }
  
  .register-box{
@@ -17,10 +17,10 @@
  }
 
  .register-container h2 {
-   text-align: center;
+   color: #2980b9; 
+   font-size: 2rem;
    margin-bottom: 20px;
-   font-size: 24px;
-   color: #333;
+   text-align: center;
  }
  
  .register-form {
@@ -74,6 +74,6 @@
  
  @media (max-width:768px) {
    .register-container{
-      margin-bottom: 62px;
+      margin-bottom: 3.8vh;
    }
  }

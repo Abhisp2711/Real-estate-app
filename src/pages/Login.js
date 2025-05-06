@@ -31,9 +31,9 @@ const Login = ({ setUser }) => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
       {error && <div className="error-message">{error}</div>} {/* Display error message */}
       <form className="login-form" onSubmit={handleSubmit}>
+      <h2>Login</h2>
         <input
           type="email"
           name="email"
