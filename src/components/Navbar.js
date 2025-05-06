@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'; // switch-off icon
+import { faRightFromBracket } from '@fortawesome/free-solid-svg-icons'; 
 import '../styles/Navbar.css';
 
 const Navbar = ({ user, setUser }) => {

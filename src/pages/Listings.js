@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import Footer from '../components/Footer';
 import axios from 'axios';
 import '../styles/Listings.css';
 
@@ -126,7 +125,6 @@ const Listings = () => {
       ))
     )}
   </div>
-  <Footer/>
 </div>
 
   );

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Footer from '../components/Footer';
 import '../styles/Home.css';
 import axios from 'axios';
 
@@ -33,7 +32,6 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

@@ -8,8 +8,14 @@
    border-radius: 8px;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    margin-top: 50px;
+   margin-bottom: 106px;
  }
  
+ .register-box{
+   align-items: center;
+   justify-content: center;
+ }
+
  .register-container h2 {
    text-align: center;
    margin-bottom: 20px;
@@ -66,3 +72,8 @@
    cursor: not-allowed;
  }
  
+ @media (max-width:768px) {
+   .register-container{
+      margin-bottom: 62px;
+   }
+ }

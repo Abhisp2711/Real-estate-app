@@ -9,6 +9,8 @@ import Profile from './pages/Profile';
 import AddProperty from './pages/AddProperty';
 import axios from 'axios';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import Footer from './components/Footer';
+
 
 const BACKEND_URL = 'https://real-estate-backend-api-8r48.onrender.com';
 const App = () => {
@@ -38,6 +40,7 @@ const App = () => {
         <Route path="/profile" element={<Profile user={user} />} />
         <Route path="/add-property" element={<AddProperty />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

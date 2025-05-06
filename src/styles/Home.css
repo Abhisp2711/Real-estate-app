@@ -3,6 +3,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
+   height: 82vh;
 }
 .image-carousel {
    overflow: hidden;
@@ -33,3 +34,8 @@
    }
  }
  
+ @media (max-width:768px){
+   .home-container{
+      height: 76vh;
+   }
+ }

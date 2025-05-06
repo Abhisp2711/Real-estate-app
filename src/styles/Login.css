@@ -4,9 +4,9 @@
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   height: 100vh;
    background-color: #f7f7f7;
    padding: 20px;
+   height: 77vh;
  }
  
  
@@ -101,6 +101,7 @@
  @media (max-width: 768px) {
    .login-container {
      padding: 20px;
+     height: 71vh;
    }
  
    .login-form {
