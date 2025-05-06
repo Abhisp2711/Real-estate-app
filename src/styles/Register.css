@@ -1,0 +1,68 @@
+/* Register Page Styling */
+.register-container {
+   width: 100%;
+   max-width: 450px;
+   margin: 0 auto;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 8px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   margin-top: 50px;
+ }
+ 
+ .register-container h2 {
+   text-align: center;
+   margin-bottom: 20px;
+   font-size: 24px;
+   color: #333;
+ }
+ 
+ .register-form {
+   display: flex;
+   flex-direction: column;
+ }
+ 
+ .register-form .form-field {
+   margin-bottom: 15px;
+ }
+ 
+ .register-form label {
+   font-size: 14px;
+   color: #333;
+   margin-bottom: 5px;
+ }
+ 
+ .register-form input,
+ .register-form select {
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   width: 100%;
+ }
+ 
+ .register-form input:focus,
+ .register-form select:focus {
+   outline: none;
+   border-color: #007bff;
+ }
+ 
+ .register-form button {
+   padding: 10px;
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   font-size: 16px;
+   cursor: pointer;
+ }
+ 
+ .register-form button:hover {
+   background-color: #0056b3;
+ }
+ 
+ .register-form button:disabled {
+   background-color: #c0c0c0;
+   cursor: not-allowed;
+ }
+ 
