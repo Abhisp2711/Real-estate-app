@@ -52,4 +52,9 @@ real-estate-app/<br>
 git clone https://github.com/yourusername/real-estate-frontend.git
 cd real-estate-frontend
 npm install
-npm start
+npm start 
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

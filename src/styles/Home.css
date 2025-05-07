@@ -5,6 +5,9 @@
    justify-content: center;
    height: 82.6vh;
 }
+.home-container h2{
+  font-size: 1.4rem;
+}
 .image-carousel {
    overflow: hidden;
    width: 100%;
