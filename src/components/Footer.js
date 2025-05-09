@@ -12,6 +12,11 @@ const Footer = () => {
         <div className="footer-right">
           <ul className="social-links">
             <li>
+              <Link to="https://github.com/Abhisp2711" target="_blank" rel="noopener noreferrer">
+                <i className="fab fa-github"></i>
+              </Link>
+            </li>
+            <li>
               <Link to="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-facebook-f"></i>
               </Link>
@@ -22,12 +27,7 @@ const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-instagram"></i>
-              </Link>
-            </li>
-            <li>
-              <Link to="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+              <Link to="https://www.linkedin.com/in/abhishek-kumar-singh-881670299/" target="_blank" rel="noopener noreferrer">
                 <i className="fab fa-linkedin-in"></i>
               </Link>
             </li>
