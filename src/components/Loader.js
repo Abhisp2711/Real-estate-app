@@ -1,10 +1,11 @@
 import React from 'react';
-import '../styles/Loader.css';
+import ClipLoader from 'react-spinners/ClipLoader';
+import '../styles/Loader.css'; // optional custom styling
 
-const Loader = () => {
+const Loader = ({ loading = true, size = 50, color = '#2980b9' }) => {
   return (
-    <div className="loader">
-      <div className="spinner"></div>
+    <div className="loader-center">
+      <ClipLoader loading={loading} size={size} color={color} />
     </div>
   );
 };

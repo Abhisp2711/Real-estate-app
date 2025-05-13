@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Login.css'; 
+import Loader from '../components/Loader';
 
 const Login = ({ setUser }) => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const Login = ({ setUser }) => {
     password: '',
   });
   const [error, setError] = useState(null); 
+  const [loading , setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -18,6 +20,7 @@ const Login = ({ setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null); 
+    setLoading(true);
     try {
       const res = await axios.post('https://real-estate-backend-api-8r48.onrender.com/api/auth/login', formData);
       localStorage.setItem('token', res.data.token);
@@ -26,14 +29,24 @@ const Login = ({ setUser }) => {
     } catch (err) {
       console.error(err);
       setError('Invalid credentials, please try again.');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="login-container">
-      {error && <div className="error-message">{error}</div>} {/* Display error message */}
-      <form className="login-form" onSubmit={handleSubmit}>
+      {loading ? (
+        <div className='fade-overlay'>
+          <div className='loader-with-text'>
+            <Loader />
+            <p>Logging in...</p>
+          </div>
+        </div>
+      ):(
+      <form className={`login-form ${loading ? 'blurred': ''}`}onSubmit={handleSubmit}>
       <h2>Login</h2>
+      {error && <div className="error-message">{error}</div>} 
         <input
           type="email"
           name="email"
@@ -53,6 +66,7 @@ const Login = ({ setUser }) => {
           Don't have an account? <Link to="/register">Sign up</Link>
         </div>
       </form>
+      )}
     </div>
   );
 };

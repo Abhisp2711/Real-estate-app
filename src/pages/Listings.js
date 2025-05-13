@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import '../styles/Listings.css';
+import Loader from '../components/Loader'; 
 
 const Listings = () => {
   const [listings, setListings] = useState([]);
@@ -11,6 +12,7 @@ const Listings = () => {
     minPrice: '',
     maxPrice: ''
   });
+  const [loading, setLoading] = useState(true);
 
   const applyFilters = useCallback((newFilters) => {
     let filtered = [...listings];
@@ -38,13 +40,15 @@ const Listings = () => {
 
   useEffect(() => {
     const fetchListings = async () => {
+      setLoading(true); 
       try {
         const res = await axios.get('https://real-estate-backend-api-8r48.onrender.com/api/properties');
-        console.log('Fetched Listings:', res.data);
         setListings(res.data.properties);
         setFilteredListings(res.data.properties);
       } catch (err) {
         console.error('Error fetching listings:', err);
+      } finally {
+        setLoading(false); 
       }
     };
 
@@ -64,69 +68,71 @@ const Listings = () => {
   };
 
   return (
-   <div className="listings-container">
-  <h2>Property Listings</h2>
+    <div className="listings-container">
+      <h2>Property Listings</h2>
 
-  <div className="filter-form">
-    <select name="type" onChange={handleChange} value={filters.type}>
-      <option value="">All Types</option>
-      <option value="rent">Rent</option>
-      <option value="buy">Buy</option>
-    </select>
-    <input
-      name="location"
-      placeholder="Location"
-      onChange={handleChange}
-      value={filters.location}
-    />
-    <input
-      name="minPrice"
-      type="number"
-      placeholder="Min Price"
-      onChange={handleChange}
-      value={filters.minPrice}
-    />
-    <input
-      name="maxPrice"
-      type="number"
-      placeholder="Max Price"
-      onChange={handleChange}
-      value={filters.maxPrice}
-    />
-    <button onClick={handleApplyFilter}>Apply Filter</button>
-  </div>
+      <div className="filter-form">
+        <select name="type" onChange={handleChange} value={filters.type}>
+          <option value="">All Types</option>
+          <option value="rent">Rent</option>
+          <option value="buy">Buy</option>
+        </select>
+        <input
+          name="location"
+          placeholder="Location"
+          onChange={handleChange}
+          value={filters.location}
+        />
+        <input
+          name="minPrice"
+          type="number"
+          placeholder="Min Price"
+          onChange={handleChange}
+          value={filters.minPrice}
+        />
+        <input
+          name="maxPrice"
+          type="number"
+          placeholder="Max Price"
+          onChange={handleChange}
+          value={filters.maxPrice}
+        />
+        <button onClick={handleApplyFilter}>Apply Filter</button>
+      </div>
 
-  <div className="listings-grid">
-    {filteredListings.length === 0 ? (
-      <p>No listings available</p>
-    ) : (
-      filteredListings.map((listing) => (
-        <div key={listing._id} className="listing-card">
-          <div>
-            {listing.images && listing.images.length > 0 ? (
-              listing.images.map((imageUrl, index) => (
-                <img
-                  key={index}
-                  src={imageUrl}
-                  alt={`property-image-${index}`}
-                />
-              ))
-            ) : (
-              <p>No images available for this property.</p>
-            )}
-          </div>
-          <h3>{listing.title}</h3>
-          <p>{listing.description}</p>
-          <p>Price: ₹{listing.price}</p>
-          <p>Location: {listing.location}</p>
-          <p>Type: {listing.type}</p>
-
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="listings-grid">
+          {filteredListings.length === 0 ? (
+            <p>No listings available</p>
+          ) : (
+            filteredListings.map((listing) => (
+              <div key={listing._id} className="listing-card">
+                <div>
+                  {listing.images && listing.images.length > 0 ? (
+                    listing.images.map((imageUrl, index) => (
+                      <img
+                        key={index}
+                        src={imageUrl}
+                        alt={`property-image-${index}`}
+                      />
+                    ))
+                  ) : (
+                    <p>No images available for this property.</p>
+                  )}
+                </div>
+                <h3>{listing.title}</h3>
+                <p>{listing.description}</p>
+                <p>Price: ₹{listing.price}</p>
+                <p>Location: {listing.location}</p>
+                <p>Type: {listing.type}</p>
+              </div>
+            ))
+          )}
         </div>
-      ))
-    )}
-  </div>
-</div>
-
+      )}
+    </div>
   );
 };
 
