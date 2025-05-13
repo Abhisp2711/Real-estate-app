@@ -3,7 +3,8 @@
 This is the frontend of the Real Estate Web Platform built using **React.js**. It allows users to register, log in, browse property listings, add properties (if they are sellers), and manage their profile.
 
 Live App: [https://real-estate-parsunet.netlify.app/](https://real-estate-parsunet.netlify.app/)  
-Backend API: [https://real-estate-backend-api-8r48.onrender.com](https://real-estate-backend-api-8r48.onrender.com)
+Backend API: [https://real-estate-backend-api-8r48.onrender.com](https://real-estate-backend-api-8r48.onrender.com)<br>
+GitHub Backend: [https://github.com/Abhisp2711/real-estate-backend-api](https://github.com/Abhisp2711/real-estate-backend-api)
 
 ---
 
