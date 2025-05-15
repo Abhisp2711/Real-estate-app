@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/Home.css';
 import axios from 'axios';
-import Loader from '../components/Loader';
+import Loader2 from '../components/loader2';
 
 const Home = () => {
   const [images, setImages] = useState([]);
@@ -31,7 +32,7 @@ const Home = () => {
       <h2>Welcome to the Real Estate Platform</h2>
       <p>Find your dream property here!</p>
       {loading ?(
-        <Loader />
+        <Loader2 probe = {'Loading...'} />
       ):(
       <div className="image-carousel">
         <div className="carousel-track">
@@ -41,6 +42,9 @@ const Home = () => {
         </div>
       </div>
       )} 
+      <Link to = "/listings" className ="explore-button">
+        Explore Properties
+      </Link>
     </div>
   );
 };

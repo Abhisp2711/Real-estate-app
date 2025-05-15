@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import '../styles/Listings.css';
-import Loader from '../components/Loader'; 
+import Loader2 from '../components/loader2';
 
 const Listings = () => {
   const [listings, setListings] = useState([]);
@@ -13,34 +13,21 @@ const Listings = () => {
     maxPrice: ''
   });
   const [loading, setLoading] = useState(true);
+  const [selectedImage, setSelectedImage] = useState(null); 
 
   const applyFilters = useCallback((newFilters) => {
     let filtered = [...listings];
-
-    if (newFilters.type) {
-      filtered = filtered.filter((listing) => listing.type === newFilters.type);
-    }
-
-    if (newFilters.location) {
-      filtered = filtered.filter((listing) =>
-        listing.location.toLowerCase().includes(newFilters.location.toLowerCase())
-      );
-    }
-
-    if (newFilters.minPrice) {
-      filtered = filtered.filter((listing) => listing.price >= newFilters.minPrice);
-    }
-
-    if (newFilters.maxPrice) {
-      filtered = filtered.filter((listing) => listing.price <= newFilters.maxPrice);
-    }
-
+    if (newFilters.type) filtered = filtered.filter((l) => l.type === newFilters.type);
+    if (newFilters.location) filtered = filtered.filter((l) =>
+      l.location.toLowerCase().includes(newFilters.location.toLowerCase()));
+    if (newFilters.minPrice) filtered = filtered.filter((l) => l.price >= newFilters.minPrice);
+    if (newFilters.maxPrice) filtered = filtered.filter((l) => l.price <= newFilters.maxPrice);
     setFilteredListings(filtered);
   }, [listings]);
 
   useEffect(() => {
     const fetchListings = async () => {
-      setLoading(true); 
+      setLoading(true);
       try {
         const res = await axios.get('https://real-estate-backend-api-8r48.onrender.com/api/properties');
         setListings(res.data.properties);
@@ -48,24 +35,21 @@ const Listings = () => {
       } catch (err) {
         console.error('Error fetching listings:', err);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
-
     fetchListings();
   }, []);
 
-  const handleApplyFilter = () => {
-    applyFilters(filters);
-  };
+  const handleApplyFilter = () => applyFilters(filters);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value,
-    }));
+    setFilters((prev) => ({ ...prev, [name]: value }));
   };
+
+  const handleImageClick = (url) => setSelectedImage(url);
+  const closeModal = () => setSelectedImage(null);
 
   return (
     <div className="listings-container">
@@ -77,31 +61,14 @@ const Listings = () => {
           <option value="rent">Rent</option>
           <option value="buy">Buy</option>
         </select>
-        <input
-          name="location"
-          placeholder="Location"
-          onChange={handleChange}
-          value={filters.location}
-        />
-        <input
-          name="minPrice"
-          type="number"
-          placeholder="Min Price"
-          onChange={handleChange}
-          value={filters.minPrice}
-        />
-        <input
-          name="maxPrice"
-          type="number"
-          placeholder="Max Price"
-          onChange={handleChange}
-          value={filters.maxPrice}
-        />
+        <input name="location" placeholder="Location" onChange={handleChange} value={filters.location} />
+        <input name="minPrice" type="number" placeholder="Min Price" onChange={handleChange} value={filters.minPrice} />
+        <input name="maxPrice" type="number" placeholder="Max Price" onChange={handleChange} value={filters.maxPrice} />
         <button onClick={handleApplyFilter}>Apply Filter</button>
       </div>
 
       {loading ? (
-        <Loader />
+        <Loader2  />
       ) : (
         <div className="listings-grid">
           {filteredListings.length === 0 ? (
@@ -109,13 +76,15 @@ const Listings = () => {
           ) : (
             filteredListings.map((listing) => (
               <div key={listing._id} className="listing-card">
-                <div>
+                <div className="listing-images">
                   {listing.images && listing.images.length > 0 ? (
                     listing.images.map((imageUrl, index) => (
                       <img
                         key={index}
                         src={imageUrl}
                         alt={`property-image-${index}`}
+                        onClick={() => handleImageClick(imageUrl)}
+                        className="thumbnail"
                       />
                     ))
                   ) : (
@@ -130,6 +99,15 @@ const Listings = () => {
               </div>
             ))
           )}
+        </div>
+      )}
+
+      {selectedImage && (
+        <div className="image-modal" onClick={closeModal}>
+          <div className="image-modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close-btn" onClick={closeModal}>×</span>
+            <img src={selectedImage} alt="Enlarged property" />
+          </div>
         </div>
       )}
     </div>

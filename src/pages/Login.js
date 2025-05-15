@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/Login.css'; 
-import Loader from '../components/Loader';
+import Loader2 from '../components/loader2'
 
 const Login = ({ setUser }) => {
   const [formData, setFormData] = useState({
@@ -39,7 +39,7 @@ const Login = ({ setUser }) => {
       {loading ? (
         <div className='fade-overlay'>
           <div className='loader-with-text'>
-            <Loader />
+            <Loader2 probe={'Logging...'}/>
             <p>Logging in...</p>
           </div>
         </div>
