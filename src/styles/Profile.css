@@ -1,6 +1,6 @@
 .profile-container {
-   max-width: 360px;
-   margin: 7.13rem auto;
+   max-width: 200px;
+   margin: 7.2rem auto;
    background-color: #fdfdfd;
    padding: 2rem;
    border-radius: 8px;
@@ -24,6 +24,12 @@
  
  @media (max-width:768px){
    .profile-container{
-      margin: 6.01rem auto;
+      margin: 6rem auto;
    }
+ }
+
+ @media (max-width: 450px){
+  .profile-container{
+    margin: 10.3rem auto;
+  }
  }
