@@ -14,14 +14,17 @@
    margin-bottom: 0.5rem;
  }
  
+ .filter-form select,
  .filter-form input {
    padding: 0.5rem;
    font-size: 1rem;
  }
  
  .filter-form button {
-   padding: 0.5rem 1rem;
-   font-size: 1rem;
+   margin: 10px 0 10px 10px;
+   height: 44.8px;
+   padding: 0 1rem;
+   font-size:1rem;
    background-color: #007bff;
    border: none;
    color: white;
@@ -29,28 +32,8 @@
  }
  
  .filter-form button:hover {
-  color: #ededee;
-  background-color: #d4af37;
+   background-color: #0056b3;
  }
-.filter-form select{
-  padding: 8px 12px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: white;
-  color: #333;
-  outline: none;
-  cursor: pointer;
-  transition: border-color 0.3s ease;
-}
-.filter-form select:hover{
-  border-color: #888;
-}
-.filter-form select:focus{
-  border-color:#d4af37;
-  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5);;
-}
- 
  
  /* Listings */
  .listings-grid {

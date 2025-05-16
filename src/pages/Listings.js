@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+import AnimatedDropdown from '../components/AnimatedDropdown';
 import '../styles/Listings.css';
 import Loader2 from '../components/loader2';
 
@@ -56,11 +57,7 @@ const Listings = () => {
       <h2>Property Listings</h2>
 
       <div className="filter-form">
-        <select name="type" onChange={handleChange} value={filters.type}>
-          <option value="">All Types</option>
-          <option value="rent">Rent</option>
-          <option value="buy">Buy</option>
-        </select>
+       <AnimatedDropdown value = {filters.type} onChange={handleChange}/>
         <input name="location" placeholder="Location" onChange={handleChange} value={filters.location} />
         <input name="minPrice" type="number" placeholder="Min Price" onChange={handleChange} value={filters.minPrice} />
         <input name="maxPrice" type="number" placeholder="Max Price" onChange={handleChange} value={filters.maxPrice} />
